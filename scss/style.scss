@@ -1,0 +1,263 @@
+@import 'config';
+@import 'utilities';
+
+@font-face 
+{
+    font-family: 'Hanken Grotesk';
+    src: url('../assets/fonts/HankenGrotesk-VariableFont_wght.ttf');
+}
+
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body
+{
+    font-family: 'Hanken Grotesk';
+    font-size: 18px;
+    background-color: rgba($pale-blue, 0.1);
+    color: $dark-gray-blue;
+}
+
+main
+{
+    min-height: 100vh;
+}
+
+footer
+{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+}
+
+a
+{
+    text-decoration: none;
+    color: $light-slate-blue;
+}
+
+%panel
+{
+    width: 50%;
+    height: 100%;
+}
+
+.title
+{
+    font-size: 1.3rem;
+}
+
+.content
+{
+    width: 100%;
+    height: 85%;
+    margin: 0 35px;
+    justify-content: space-between;
+}
+
+.btn
+{
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 30px;
+    border: none;
+    background: $dark-gray-blue;
+    color: #fff;
+    font-weight: 700;
+}
+
+.btn:hover
+{
+    cursor: pointer;
+    background: linear-gradient($light-slate-blue, $light-royal-blue);
+}
+
+.container
+{
+    background-color: #fff;
+    height: 420px;
+    width: 650px;
+    border-radius: 30px;
+    box-shadow: 10px 20px 15px $pale-blue;
+
+    .result-panel
+    {
+        @extend %panel;
+        background: linear-gradient($light-slate-blue, $light-royal-blue);
+        border-radius: 30px;
+
+        .title
+        {
+            color: $light-lavender;
+        }
+
+        .text
+        {
+            margin: 0 20px;
+
+            h2
+            {
+                color: #fff;
+                margin-bottom: 10px;
+            }
+    
+            .lead
+            {
+                color: $light-lavender;
+                text-align: center;
+                font-size: 0.9rem;
+            }
+        }
+
+
+        .score-circle
+        {
+            min-width: 170px;
+            min-height: 170px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            margin: 25px 0;
+            background: linear-gradient($violet-blue, $persian-blue);
+
+            h2
+            {
+                color: #fff;
+                font-size: 4rem;
+            }
+
+            p
+            {
+                font-size: 1rem;
+                font-weight: 700;
+                color: rgba($light-lavender, 0.5);
+            }
+
+        }
+
+    }
+
+    .summary-panel
+    {
+        @extend %panel;
+        text-align: left;
+
+        .title
+        {
+            width: 100%;
+        }
+
+        .item
+        {
+            width: 100%;
+            border-radius: 8px;
+            justify-content: space-between;
+            padding: 13px;
+
+
+            .item-title
+            {
+
+                h2
+                {
+                    font-size: 1.1rem;
+                    text-align: center;
+                    margin: 0 10px
+                }
+
+            }
+
+            .item-score
+            {
+                font-weight: 700;
+
+                .total-points
+                {
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        .item:first-of-type
+        {
+            @include set-item-colors($light-red);
+        }
+   
+        .item:nth-of-type(2)
+        {
+            @include set-item-colors($orangey-yellow);
+        }
+          
+        .item:nth-of-type(3)
+        {
+            @include set-item-colors($green-teal);
+        }
+           
+        .item:nth-of-type(4)
+        {
+            @include set-item-colors($cobalt-blue);
+        }
+    }
+
+
+}
+
+
+
+@media(max-width: 550px)
+{
+
+    .attribution
+    {
+        display: none;
+    }
+
+
+    .container.flex
+    {
+        flex-direction: column;
+    }
+
+    .container
+    {
+        min-height: 100vh;
+        border-radius: 0;
+
+        .title
+        {
+            font-size: 1.1rem;
+        }
+
+        %panel
+        {
+            width: 100%;
+        }
+
+        .result-panel
+        {
+            min-height: 45vh;
+            border-radius: 0 0 30px 30px;
+
+            .score-circle
+            {
+                min-width: 140px;
+                min-height: 140px;
+                margin: 0;
+            }
+        }
+
+        .summary-panel
+        {
+            min-height: 55vh;
+        }
+    }
+
+}
+
+
